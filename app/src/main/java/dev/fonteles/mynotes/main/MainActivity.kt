@@ -1,10 +1,10 @@
-package dev.fonteles.mynotes
+package dev.fonteles.mynotes.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import dev.fonteles.mynotes.R
 import dev.fonteles.mynotes.data.FuncResult
-import dev.fonteles.mynotes.data.datasource.ILoginDataSource
 import dev.fonteles.mynotes.data.repository.UserRepository
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
@@ -14,9 +14,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+
+
         runBlocking {
             launch {
-                val userRep = UserRepository.getInstance()
+                val userRep = UserRepository.getInstance(application)
                 val result = userRep.login("adminadmin", "adminadmin")
 
                 if(result is FuncResult.Success) {

@@ -8,5 +8,6 @@ import dev.fonteles.mynotes.data.model.User
 interface IUserRepository {
 
     suspend fun login(username: String, password: String) : FuncResult<Token>
+    suspend fun getLocalToken() : FuncResult<Token>
 
 }

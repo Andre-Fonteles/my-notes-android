@@ -2,6 +2,7 @@ package dev.fonteles.mynotes.data.datasource
 
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import dev.fonteles.mynotes.data.FuncResult
 import dev.fonteles.mynotes.data.model.Token
 import org.junit.After
 import org.junit.Assert
@@ -32,13 +33,15 @@ class LocalTokenDataSourceTest {
     fun `save and get token`() {
         val token = Token("username", "hash")
         localTokenDataSource.saveToken(token.copy())
-        Assert.assertEquals(token, localTokenDataSource.getToken())
+        val tokenRes = localTokenDataSource.getToken() as FuncResult.Success
+
+        Assert.assertEquals(token, tokenRes.data)
     }
 
     @Test
     fun `get token when none exist`() {
         val token = Token("username", "hash")
-        Assert.assertNull(localTokenDataSource.getToken())
+        Assert.assertTrue(localTokenDataSource.getToken() is FuncResult.Error)
     }
 
     @Test
@@ -46,7 +49,7 @@ class LocalTokenDataSourceTest {
         val token = Token("username", "hash")
         localTokenDataSource.saveToken(token.copy())
         localTokenDataSource.deleteToken()
-        Assert.assertNull(localTokenDataSource.getToken())
+        Assert.assertTrue(localTokenDataSource.getToken() is FuncResult.Error)
     }
 
 }

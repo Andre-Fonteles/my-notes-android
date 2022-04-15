@@ -2,6 +2,7 @@ package dev.fonteles.mynotes.data.datasource
 
 import android.app.Application
 import android.content.Context
+import dev.fonteles.mynotes.data.FuncResult
 import dev.fonteles.mynotes.data.model.Token
 import java.lang.Exception
 
@@ -24,16 +25,15 @@ class LocalTokenDataSource(val app: Application) : ILocalTokenDataSource {
     private val USERNAME = "username"
     private val HASH = "hash"
 
-    override fun getToken(): Token? {
+    override fun getToken(): FuncResult<Token> {
         val sharedPreference =  app.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
         val username = sharedPreference.getString(USERNAME, "")
         val hash = sharedPreference.getString(HASH, "")
 
         if(username?.isEmpty() == false && hash?.isEmpty() == false) {
-            return Token(username, hash)
-        } else {
-            return null
+            return FuncResult.Success(Token(username, hash))
         }
+        return FuncResult.Error(Exception("User not logged in"))
     }
 
     override fun saveToken(token: Token): Boolean {
