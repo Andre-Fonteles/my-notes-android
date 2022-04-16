@@ -6,7 +6,6 @@ import dev.fonteles.mynotes.data.model.User
 import dev.fonteles.mynotes.data.repository.FakeUserRepository
 import dev.fonteles.mynotes.getOrAwaitValue
 import kotlinx.coroutines.runBlocking
-import kotlinx.coroutines.test.runBlockingTest
 import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Rule
@@ -15,7 +14,6 @@ import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
 class MainViewModelTest {
-
     @get:Rule
     var instantExecutorRule = InstantTaskExecutorRule()
 

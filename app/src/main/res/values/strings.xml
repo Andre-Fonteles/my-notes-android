@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">My Notes</string>
-    <string name="login.edittext.username">Username</string>
-    <string name="login.edittext.password">Password</string>
-    <string name="login.button.send">Log In / Register</string>
+    <string name="ui.login.edittext.username">Username</string>
+    <string name="ui.login.edittext.password">Password</string>
+    <string name="ui.login.button.send">Log In / Register</string>
+    <string name="ui.login.error.username">Enter a letter followed by 2 or more characters</string>
+    <string name="ui.login.error.password">Enter at least 6 characters</string>
 </resources>
