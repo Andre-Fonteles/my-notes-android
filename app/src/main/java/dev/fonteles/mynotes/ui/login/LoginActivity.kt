@@ -2,6 +2,7 @@ package dev.fonteles.mynotes.ui.login
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.core.widget.doAfterTextChanged
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -42,13 +43,15 @@ class LoginActivity : AppCompatActivity() {
         viewBinding.username.doAfterTextChanged {
             loginViewModel.validateForm(
                 it.toString(),
-                viewBinding.password.text.toString())
+                viewBinding.password.text.toString()
+            )
         }
 
         viewBinding.password.doAfterTextChanged {
             loginViewModel.validateForm(
                 viewBinding.username.text.toString(),
-                it.toString())
+                it.toString()
+            )
         }
     }
 }

@@ -8,7 +8,7 @@ import dev.fonteles.mynotes.data.repository.IUserRepository
 
 class LoginViewModel(private val userRepository: IUserRepository): ViewModel() {
 
-    private val _formState = MutableLiveData<LoginFormState>(LoginFormState())
+    private val _formState = MutableLiveData<LoginFormState>()
     val formState: LiveData<LoginFormState> = _formState
 
     private val usernameRegex = Regex("^[a-zA-Z]+[\\w-]{2,}\$")
