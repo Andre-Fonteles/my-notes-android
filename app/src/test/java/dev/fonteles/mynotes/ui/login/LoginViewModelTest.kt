@@ -2,6 +2,8 @@ package dev.fonteles.mynotes.ui.login
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import dev.fonteles.mynotes.data.FuncResult
+import dev.fonteles.mynotes.data.model.Token
 import dev.fonteles.mynotes.data.model.User
 import dev.fonteles.mynotes.data.repository.FakeUserRepository
 import dev.fonteles.mynotes.getOrAwaitValue
@@ -31,6 +33,20 @@ class LoginViewModelTest {
     fun createViewModel() {
         userRepository = FakeUserRepository(remoteUsers.toMutableList(), null)
         loginViewModel = LoginViewModel(userRepository)
+    }
+
+    @Test
+    fun `login with good username & password returns token`() {
+        loginViewModel.login(user1.username, user1.password)
+        val value = loginViewModel.loginResult.getOrAwaitValue() as FuncResult.Success
+        Assert.assertTrue(value.data.username == user1.username)
+    }
+
+    @Test
+    fun `login with bad username & password returns error`() {
+        loginViewModel.login(user1.username, user1.password + "gibberish")
+        val value = loginViewModel.loginResult.getOrAwaitValue()
+        Assert.assertTrue(value is FuncResult.Error)
     }
 
     @Test

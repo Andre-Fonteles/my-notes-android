@@ -80,6 +80,8 @@ dependencies {
     implementation "androidx.fragment:fragment-testing:1.4.1"
     implementation "androidx.test:core:1.4.0"
 
+    // Hamcrest
+    testImplementation "org.hamcrest:hamcrest:2.2"
 
     // AndroidX Instrumented testing
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'

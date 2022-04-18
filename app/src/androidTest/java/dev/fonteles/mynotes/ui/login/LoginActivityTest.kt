@@ -2,6 +2,7 @@ package dev.fonteles.mynotes.ui.login
 
 import androidx.test.espresso.Espresso.*
 import androidx.test.espresso.matcher.ViewMatchers.*
+import org.hamcrest.Matchers.*
 import androidx.test.espresso.action.ViewActions.*
 import androidx.test.espresso.assertion.ViewAssertions.*
 import androidx.test.ext.junit.rules.ActivityScenarioRule
@@ -13,9 +14,6 @@ import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
 class LoginActivityTest {
-
-//    @get:Rule
-//    var activityScenarioRule = activityScenarioRule<LoginActivity>()
 
     @get:Rule
     var activityScenarioRule = ActivityScenarioRule<LoginActivity>(LoginActivity::class.java)
@@ -37,5 +35,10 @@ class LoginActivityTest {
         onView(withId(R.id.username)).perform(typeText("username"))
         onView(withId(R.id.password)).perform(typeText("123456"))
         onView(withId(R.id.login_register)).check(matches(isEnabled()))
+    }
+
+    @Test
+    fun startUp_ProgressBarInvisible() {
+        onView(withId(R.id.progressBar)).check(matches(not(isDisplayed())))
     }
 }
