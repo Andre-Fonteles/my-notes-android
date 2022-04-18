@@ -19,14 +19,7 @@ class LocalTokenDataSourceTest {
 
     @Before
     fun createDataSource() {
-        localTokenDataSource = LocalTokenDataSource.getInstance(ApplicationProvider.getApplicationContext())
-    }
-
-    @Before
-    fun resetSingleton() {
-        val instanceField = LocalTokenDataSource::class.java.getDeclaredField("instance")
-        instanceField.isAccessible = true
-        instanceField.set(null, null)
+        localTokenDataSource = LocalTokenDataSource(ApplicationProvider.getApplicationContext())
     }
 
     @Test

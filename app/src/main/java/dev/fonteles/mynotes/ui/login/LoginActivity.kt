@@ -6,16 +6,20 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.core.widget.doAfterTextChanged
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import dagger.hilt.EntryPoint
+import dagger.hilt.android.AndroidEntryPoint
 import dev.fonteles.mynotes.data.FuncResult
 import dev.fonteles.mynotes.databinding.ActivityLoginBinding
 import dev.fonteles.mynotes.ui.main.MainActivity
 
+@AndroidEntryPoint
 class LoginActivity : AppCompatActivity() {
 
-    private lateinit var loginViewModel: LoginViewModel
+    private val loginViewModel: LoginViewModel by viewModels()
     private lateinit var viewBinding: ActivityLoginBinding
 
     private var reactToChange = true
@@ -25,9 +29,6 @@ class LoginActivity : AppCompatActivity() {
 
         viewBinding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(viewBinding.root)
-
-        loginViewModel = ViewModelProvider(this, LoginViewModelFactory(application))
-            .get(LoginViewModel::class.java)
 
         loginViewModel.formState.observe(this, Observer { formState ->
             val usernameError = formState.usernameError
@@ -60,6 +61,7 @@ class LoginActivity : AppCompatActivity() {
                     viewBinding.password.text.clear()
                     reactToChange = true
                     viewBinding.progressBar.visibility = View.INVISIBLE
+                    viewBinding.loginRegister.isEnabled = false
                 }
             }
 

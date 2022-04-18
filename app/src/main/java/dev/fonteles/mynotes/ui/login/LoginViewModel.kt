@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import dagger.hilt.android.lifecycle.HiltViewModel
 import dev.fonteles.mynotes.R
 import dev.fonteles.mynotes.data.FuncResult
 import dev.fonteles.mynotes.data.model.Token
@@ -11,10 +12,12 @@ import dev.fonteles.mynotes.data.repository.IUserRepository
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class LoginViewModel(
-    private val userRepository: IUserRepository,
-): ViewModel() {
+@HiltViewModel
+class LoginViewModel @Inject constructor(
+    val userRepository: IUserRepository
+    ): ViewModel() {
 
     private val _formState = MutableLiveData<LoginFormState>()
     val formState: LiveData<LoginFormState> = _formState

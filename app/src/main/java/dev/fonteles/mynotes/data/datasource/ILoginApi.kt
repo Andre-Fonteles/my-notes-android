@@ -12,12 +12,4 @@ interface ILoginApi {
     @POST("login/")
     suspend fun login(@Body user: User): Token
 
-    companion object {
-        fun getInstance(): ILoginApi {
-            return Retrofit.Builder().baseUrl(ServerConstants.BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build()
-                .create(ILoginApi::class.java)
-        }
-    }
 }

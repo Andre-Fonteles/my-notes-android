@@ -4,10 +4,9 @@ import dev.fonteles.mynotes.data.FuncResult
 import dev.fonteles.mynotes.data.model.Token
 import dev.fonteles.mynotes.data.model.User
 import java.lang.Exception
+import javax.inject.Inject
 
-class LoginRemoteDataSource: ILoginDataSource {
-
-    val loginApi = ILoginApi.getInstance()
+class LoginRemoteDataSource @Inject constructor(val loginApi: ILoginApi): ILoginDataSource {
 
     override suspend fun login(user: User): FuncResult<Token> {
         try {
