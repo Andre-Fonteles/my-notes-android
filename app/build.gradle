@@ -1,6 +1,8 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
 }
 
 android {
@@ -89,4 +91,8 @@ dependencies {
     androidTestImplementation "androidx.test:core-ktx:$androidXTestVersion"
     androidTestImplementation "androidx.test:runner:$androidXTestVersion"
     androidTestImplementation "androidx.test:rules:$androidXTestVersion"
+
+    // Hilt
+    implementation "com.google.dagger:hilt-android:$hilt_version"
+    kapt "com.google.dagger:hilt-compiler:$hilt_version"
 }
