@@ -9,8 +9,6 @@ import dev.fonteles.mynotes.R
 import dev.fonteles.mynotes.data.FuncResult
 import dev.fonteles.mynotes.data.model.Token
 import dev.fonteles.mynotes.data.repository.IUserRepository
-import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 

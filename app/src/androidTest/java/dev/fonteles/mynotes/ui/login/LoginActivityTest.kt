@@ -8,6 +8,7 @@ import androidx.test.espresso.assertion.ViewAssertions.*
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import dev.fonteles.mynotes.R
+import org.hamcrest.Matchers
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith

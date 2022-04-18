@@ -3,14 +3,11 @@ package dev.fonteles.mynotes.ui.login
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.core.widget.doAfterTextChanged
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
-import dagger.hilt.EntryPoint
 import dagger.hilt.android.AndroidEntryPoint
 import dev.fonteles.mynotes.data.FuncResult
 import dev.fonteles.mynotes.databinding.ActivityLoginBinding
